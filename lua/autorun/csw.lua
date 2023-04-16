@@ -16,7 +16,9 @@ else
 	CSWeaponsServer = util.JSONToTable(WEPFILE)
 end
 -- local CSWClientEnabled = CreateConVar("csw_allow_client",1,"Enables client-customizable weapon list")
-
+if !CSWeaponsServer then
+	CSWeaponsServer = {}
+end
 hook.Add("PlayerLoadout","CSW_TESTW",function(ply)
 	if CSWEnabled:GetBool() then
 		for _, i in pairs(CSWeaponsServer) do
