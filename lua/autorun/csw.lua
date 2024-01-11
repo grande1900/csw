@@ -63,7 +63,6 @@ concommand.Add("csw_print", function()
 	end
 end)
 concommand.Add("csw_tog", function()
-	local wep = nil
 	local key = nil
 	for j, i in pairs(CSWeaponsServer) do
 		if i == CSWAddWep:GetString() then
@@ -78,4 +77,8 @@ concommand.Add("csw_tog", function()
 	end
 	file.Write("csw/weapondata.json",util.TableToJSON(CSWeaponsServer,true))
 	RunConsoleCommand("csw_print")
+end)
+concommand.Add("csw_reset", function()
+	CSWeaponsServer = {}
+	file.Write("csw/weapondata.json","")
 end)
